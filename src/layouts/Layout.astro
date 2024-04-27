@@ -1,4 +1,7 @@
 ---
+
+import Header from "../components/header.astro"
+import Main from "../components/main.astro";
 interface Props {
 	title: string;
 	description?: string;
@@ -20,6 +23,8 @@ const { title, description = "Une communcauté de producteurs de musique et d'en
 		<title>{title}</title>
 	</head>
 	<body class="min-h-screen">
+		<Header />
+		<Main />
 		<slot />
 	</body>
 </html>
