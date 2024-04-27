@@ -1,29 +1,60 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import SocialCard from "../components/Social-Card.astro";
 ---
 
 <Layout title="Chainbrary">
-	<main>
-		<h2 class="text-center text-4xl font-semibold py-8 mt-3">Des solutions sur-mesure à votre portée</h2>
-		<ul role="list" class="flex flex-col lg:flex-row justify-center items-center gap-8">
-			<Card
-				image="/images/payment-service.svg"
-				title="Demande de Paiement"
-				body="Connectez votre portefeuille, créez un ID ou un QRcode et utilisez-le pour recevoir des paiements."
-			/>
-			<Card
-				image="/images/bid-service.svg"
-				title="Commencer une Offre"
-				body="Téléchargez un article, définissez une limite de temps et commencez à enchérir avec des jetons."
-			/>
-			<Card
-				image="/images/document-service.svg"
-				title="Casier de Documents"
-				body="Verrouillez les informations confidentielles et ouvrez uniquement avec des jetons."
-			/>
-		</ul>
-	</main>
+  <main
+    class="flex flex-col pb-24 shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]"
+  >
+    <h2 class="text-center text-4xl h-auto font-semibold py-8 mt-3">
+      Des solutions sur-mesure à votre portée
+    </h2>
+    <ul
+      role="list"
+      class="flex flex-col lg:flex-row justify-center items-center gap-8"
+    >
+      <Card
+        image="/images/payment-service.svg"
+        title="Demande de Paiement"
+        body="Connectez votre portefeuille, créez un ID ou un QRcode et utilisez-le pour recevoir des paiements."
+      />
+      <Card
+        image="/images/bid-service.svg"
+        title="Commencer une Offre"
+        body="Téléchargez un article, définissez une limite de temps et commencez à enchérir avec des jetons."
+      />
+      <Card
+        image="/images/document-service.svg"
+        title="Casier de Documents"
+        body="Verrouillez les informations confidentielles et ouvrez uniquement avec des jetons."
+      />
+    </ul>
+  </main>
+  <section
+    class="map py-16 flex flex-col items-center bg-gradient-to-tr from-[#e9e2ff] to-white"
+  >
+    <h2 class="text-center text-4xl h-auto font-semibold py-8 mt-3">
+      Atteindre une Reconnaissance à Grande Échelle
+    </h2>
+    <img
+      src="/images/landing-page-world-map.png"
+      class="w-4/5 lg:w-2/5"
+      alt="world map"
+    />
+  </section>
+  <section class="join-us flex flex-col items-center">
+    <h2 class="text-center text-4xl h-auto font-semibold py-8 mt-3">
+      Rejoignez Notre Communauté
+    </h2>
+    <ul class="grid grid-cols-2 lg:grid-cols-3 2xl:flex gap-8 my-10">
+      <SocialCard name="Discord" icon="ic:baseline-discord" href="/" />
+      <SocialCard name="Twitter" icon="ph:x-logo" href="/" />
+      <SocialCard name="Github" icon="mdi:github" href="/" />
+      <SocialCard name="Medium" icon="carbon:logo-medium" href="/" />
+      <SocialCard name="Facebook" icon="mdi:facebook" href="/" />
+      <SocialCard name="Instagram" icon="mdi:instagram" href="/" />
+    </ul>
+  </section>
 </Layout>
-
-

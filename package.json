@@ -18,6 +18,11 @@
     "typescript": "^5.4.5"
   },
   "devDependencies": {
-    "@iconify-json/mdi": "^1.1.66"
+    "@iconify-json/carbon": "^1.1.31",
+    "@iconify-json/ic": "^1.1.17",
+    "@iconify-json/mdi": "^1.1.66",
+    "@iconify-json/ph": "^1.1.12",
+    "@iconify/icons-carbon": "^1.2.20",
+    "@iconify/json": "^2.2.204"
   }
 }

@@ -1,0 +1,21 @@
+---
+import { Icon } from "astro-icon/components";
+interface Props {
+  name: string;
+  icon: string;
+  href: string;
+}
+
+const { name, icon, href } = Astro.props;
+---
+
+<li
+  class="rounded-lg w-40 sm:w-56 h-24 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]"
+>
+  <a href={href} class="flex h-full flex-col justify-between">
+    <h3 class="p-2 text-xl font-semibold text-purple">
+      {name}
+    </h3>
+    <p class="text-3xl p-2 self-end"><Icon name={icon} /></p>
+  </a>
+</li>
