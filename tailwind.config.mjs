@@ -5,6 +5,15 @@ export default {
 		extend: {
 			colors: {
 				purple: '#7951F9'
+			},
+			animation: {
+				'infinite-scroll': 'infinite-scroll 25s linear infinite',
+			},
+			keyframes: {
+				'infinite-scroll': {
+					from: { transform: 'translateX(0)' },
+					to: { transform: 'translateX(-100%)' },
+				}
 			}
 		},
 	},
