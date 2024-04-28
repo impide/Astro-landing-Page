@@ -1,0 +1,100 @@
+---
+import { Icon } from "astro-icon/components";
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
+---
+
+<style>
+  .active {
+    background: #f8f9fa;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px inset;
+  }
+  /* .active:after {
+    position: absolute;
+    content: "";
+    top: 73px;
+    width: 55px;
+    border-bottom: 2px solid #7951f9;
+  } */
+</style>
+<nav
+  class="navbar flex h-screen flex-col z-20 md:hidden fixed top-0 right-0 ease-in duration-200 translate-x-full bg-white items-center pt-4 max-md:py-4 w-4/5 shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]"
+>
+  <div class="flex justify-between w-full">
+    <a href="/">
+      <img
+        class="m-3"
+        src="/cb-logo.svg"
+        alt="chainbrary logo"
+        width={50}
+        height={50}
+        class="object-cover"
+      />
+    </a>
+    <button class="close block text-3xl px-3 py-2 rounded-lg"
+      ><Icon name="mdi:close" /></button
+    >
+  </div>
+
+  <ul class="block w-full pb-4">
+    <li>
+      <a
+        href="/"
+        class="link flex items-center border-solid border-t border-[#eceded] hover:bg-[#F8F9FA] px-3 py-2 ease-in duration-100"
+        ><p>Accueil</p></a
+      >
+    </li>
+    <li>
+      <a
+        href="/partenariat"
+        class="link flex items-center border-solid border-t border-[#eceded] hover:bg-[#F8F9FA] px-3 py-2 ease-in duration-100"
+        ><p>Partenariat</p></a
+      >
+    </li>
+    <li>
+      <a
+        href="/services"
+        class="link flex items-center border-solid border-y border-[#eceded] hover:bg-[#F8F9FA] px-3 py-2 ease-in duration-100"
+        ><p>Services</p></a
+      >
+    </li>
+    <li>
+      <button
+        class="flex mx-2 items-center gap-x-2 text-purple px-3 py-2 mt-3 ms-3 rounded-md border-solid border border-purple ease-in duration-100 hover:bg-purple hover:text-white"
+        ><Icon name="mdi:safe-square-outline" />Community Vault</button
+      >
+    </li>
+  </ul>
+</nav>
+
+<script define:vars={{ currentPath }} ">
+  const aElement = document.querySelectorAll(".link");
+  aElement.forEach((element) => {
+    if (element.getAttribute("href").slice(1) === currentPath) {
+      element.classList.add("active");
+    }
+  });
+
+  //   const onClickOutside = (element, callback) => {
+  //     document.addEventListener("click", (e) => {
+  //       if (!element.contains(e.target)) callback();
+  //     });
+  //   };
+
+  const onClickClose = () => {
+    document.querySelector(".navbar").classList.add("translate-x-full");
+  };
+
+  document.querySelector(".close").addEventListener("click", onClickClose);
+
+  //   onClickOutside(document.querySelector(".navbar"), () => {
+  //     console.log(
+  //       document.querySelector(".navbar").classList.contains("translate-x-full")
+  //     );
+  //     if (
+  //       !document.querySelector(".navbar").classList.contains("translate-x-full")
+  //     ) {
+  //       document.querySelector(".navbar").classList.add("translate-x-full");
+  //     }
+  //   });
+</script>

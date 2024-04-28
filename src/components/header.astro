@@ -1,44 +1,86 @@
 ---
-import { Icon } from 'astro-icon/components'
-    const pathname = new URL(Astro.request.url).pathname;
-    const currentPath = pathname.slice(1);
-
+import { Icon } from "astro-icon/components";
+import MobileNav from "./Mobile-Nav.astro";
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
 ---
-<style>
-    .active {
-        color: #7951F9;
-        
-    }
-    .active:after {
-        position: absolute;
-        content: '';
-        top: 73px;
-        width: 55px;
-        border-bottom: 2px solid #7951F9;
-    }
-    
-</style>
-<header class="navbar flex justify-between items-center px-8 pt-4 max-md:px-3 max-md:py-4 w-full shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]">
-    <a href="/" class="flex items-center gap-x-4">
-        <img src="/cb-logo.svg" alt="chainbrary logo" width={32} height={32} class="object-cover">
-        <p class="text-3xl text-zinc-900 font-bold">ChainBrary</p>
-    </a>
-    <ul class="hidden md:flex md:justify-around pb-4 z-[-1] md:z-auto md:static absolute">
-        <li><a href="/"  class="link flex items-center hover:bg-[#D3D4D5] px-3 py-2 rounded-md ease-in duration-100">Accueil</a></li>
-        <li><a href="/partenariat"  class="link flex items-center hover:bg-[#D3D4D5] px-3 py-2 rounded-md ease-in duration-100">Partenariat</a></li>
-        <li><a href="/services"  class="link flex items-center hover:bg-[#D3D4D5] px-3 py-2 rounded-md ease-in duration-100">Services</a></li>
-        <li><button class="flex  mx-2 items-center gap-x-2 text-purple px-3 py-2 rounded-md border-solid border border-purple ease-in duration-100 hover:bg-purple hover:text-white"><Icon name="mdi:safe-square-outline" />Community Vault</button></li>
 
-    </ul>
-    <a class="block md:hidden text-4xl hover:bg-[#EEEFF0] px-3 py-2 rounded-lg"><Icon name="mdi:menu" /></a>
+<style>
+  .active {
+    color: #7951f9;
+  }
+  .active:after {
+    position: absolute;
+    content: "";
+    top: 73px;
+    width: 55px;
+    border-bottom: 2px solid #7951f9;
+  }
+</style>
+<header
+  class="flex justify-between items-center px-8 pt-4 max-md:px-3 max-md:py-4 w-full shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]"
+>
+  <MobileNav />
+  <a href="/" class="flex items-center gap-x-4">
+    <img
+      src="/cb-logo.svg"
+      alt="chainbrary logo"
+      width={32}
+      height={32}
+      class="object-cover"
+    />
+    <p class="text-3xl text-zinc-900 font-bold">ChainBrary</p>
+  </a>
+  <ul
+    class="hidden md:flex md:justify-around pb-4 z-[-1] md:z-auto md:static absolute"
+  >
+    <li>
+      <a
+        href="/"
+        class="link flex items-center hover:bg-[#D3D4D5] px-3 py-2 rounded-md ease-in duration-100"
+        >Accueil</a
+      >
+    </li>
+    <li>
+      <a
+        href="/partenariat"
+        class="link flex items-center hover:bg-[#D3D4D5] px-3 py-2 rounded-md ease-in duration-100"
+        >Partenariat</a
+      >
+    </li>
+    <li>
+      <a
+        href="/services"
+        class="link flex items-center hover:bg-[#D3D4D5] px-3 py-2 rounded-md ease-in duration-100"
+        >Services</a
+      >
+    </li>
+    <li>
+      <button
+        class="flex mx-2 items-center gap-x-2 text-purple px-3 py-2 rounded-md border-solid border border-purple ease-in duration-100 hover:bg-purple hover:text-white"
+        ><Icon name="mdi:safe-square-outline" />Community Vault</button
+      >
+    </li>
+  </ul>
+  <button
+    class="openthedoor block md:hidden text-4xl hover:bg-[#EEEFF0] px-3 py-2 rounded-lg"
+    ><Icon name="mdi:menu" /></button
+  >
 </header>
 
-<script define:vars={{currentPath}}">
-
-    const aElement = document.querySelectorAll('.link')
-    aElement.forEach(element => {
-        if (element.getAttribute("href").slice(1) === currentPath ) {
-            element.classList.add('active')
-        }
-    });
+<script define:vars={{ currentPath }} ">
+  const onClickOpen = () => {
+    if (
+      document.querySelector(".navbar").classList.contains("translate-x-full")
+    ) {
+      document.querySelector(".navbar").classList.remove("translate-x-full");
+    }
+  };
+  document.querySelector(".openthedoor").addEventListener("click", onClickOpen);
+  const aElement = document.querySelectorAll(".link");
+  aElement.forEach((element) => {
+    if (element.getAttribute("href").slice(1) === currentPath) {
+      element.classList.add("active");
+    }
+  });
 </script>
